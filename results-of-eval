@@ -1,0 +1,14 @@
+"C:\Program Files\Python312\python.exe" D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\evaluation\evaluate.py
+Running evaluation on test dataset
+100%|██████████| 2/2 [00:00<00:00,  3.94it/s]
+
+Test Results
+Accuracy : 0.9545454545454546
+Precision: 0.9621212121212122
+Recall   : 0.9545454545454546
+F1 Score : 0.9540863177226814
+
+Evaluation complete
+Results saved in /results folder
+
+Process finished with exit code 0

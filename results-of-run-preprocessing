@@ -1,0 +1,276 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> ffmpeg -version
+ffmpeg : The term 'ffmpeg' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included,
+verify that the path is correct and try again.
+At line:1 char:1
++ ffmpeg -version
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (ffmpeg:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> pip install ffmpeg-python
+Defaulting to user installation because normal site-packages is not writeable
+Collecting ffmpeg-python
+  Downloading ffmpeg_python-0.2.0-py3-none-any.whl.metadata (1.7 kB)
+Collecting future (from ffmpeg-python)
+  Using cached future-1.0.0-py3-none-any.whl.metadata (4.0 kB)
+Downloading ffmpeg_python-0.2.0-py3-none-any.whl (25 kB)
+Using cached future-1.0.0-py3-none-any.whl (491 kB)
+Installing collected packages: future, ffmpeg-python
+  WARNING: The scripts futurize.exe and pasteurize.exe are installed in 'C:\Users\kaush\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed ffmpeg-python-0.2.0 future-1.0.0
+
+[notice] A new release of pip is available: 24.3.1 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> ffmpeg -version
+ffmpeg : The term 'ffmpeg' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included,
+verify that the path is correct and try again.
+At line:1 char:1
++ ffmpeg -version
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (ffmpeg:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> ffmpeg --version
+ffmpeg : The term 'ffmpeg' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included,
+verify that the path is correct and try again.
+At line:1 char:1
++ ffmpeg --version
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (ffmpeg:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> pip install torchcodec
+Defaulting to user installation because normal site-packages is not writeable
+Collecting torchcodec
+  Downloading torchcodec-0.10.0-cp312-cp312-win_amd64.whl.metadata (11 kB)
+Downloading torchcodec-0.10.0-cp312-cp312-win_amd64.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 2.7 MB/s eta 0:00:00
+Installing collected packages: torchcodec
+Successfully installed torchcodec-0.10.0
+
+[notice] A new release of pip is available: 24.3.1 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> python run_preprocessing.py
+
+Starting Full Preprocessing Pipeline
+
+
+============================================================
+Running: dataset_builder.py
+============================================================
+Dataset root: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset\raw
+Output folder: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset
+
+Scanning dataset...
+
+Total valid samples: 144
+
+Splitting dataset...
+
+Train: 100
+Validation: 22
+Test: 22
+
+Saving CSV files...
+
+Saved: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset\train.csv
+Saved: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset\val.csv
+Saved: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset\test.csv
+
+Dataset build complete!
+
+Completed: dataset_builder.py
+
+============================================================
+Running: extract_frames.py
+============================================================
+Frame extraction started
+
+
+Processing train.csv - 100 videos
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:23<00:00,  4.30it/s]
+
+Processing val.csv - 22 videos
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:04<00:00,  4.44it/s]
+
+Processing test.csv - 22 videos
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:05<00:00,  4.25it/s]
+
+Frame extraction complete!
+
+Completed: extract_frames.py
+
+============================================================
+Running: extract_audio.py
+============================================================
+Starting audio extraction...
+
+
+Processing train.csv (100 videos)
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 9221.90it/s]
+
+Processing val.csv (22 videos)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<00:00, 4806.72it/s]
+
+Processing test.csv (22 videos)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<00:00, 5305.28it/s]
+
+Audio extraction complete!
+
+Completed: extract_audio.py
+
+============================================================
+Running: extract_mfcc.py
+============================================================
+Starting MFCC extraction
+
+
+Processing train (100 samples)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:02<00:00, 35.18it/s]
+Saved train features: (100, 40)
+
+Processing val (22 samples)
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<00:00, 169.06it/s]
+Saved val features: (22, 40)
+
+Processing test (22 samples)
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<00:00, 171.48it/s]
+Saved test features: (22, 40)
+
+MFCC feature extraction complete!
+
+Completed: extract_mfcc.py
+
+All preprocessing steps completed successfully!
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> python train.py --model fusion
+
+============================================================
+Starting training: FUSION model
+============================================================
+Traceback (most recent call last):
+  File "D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\training\train_fusion.py", line 13, in <module>
+    from dataloaders.fusion_dataset import FusionDataset
+ModuleNotFoundError: No module named 'dataloaders'
+
+Training failed.
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> python train.py --model fusion
+
+============================================================
+Starting training: FUSION model
+============================================================
+Traceback (most recent call last):
+  File "D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\training\train_fusion.py", line 13, in <module>
+    from dataloaders.fusion_dataset import FusionDataset
+ModuleNotFoundError: No module named 'dataloaders'
+
+Training failed.
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> python train.py --model fusion
+
+============================================================
+Starting training: FUSION model
+============================================================
+Traceback (most recent call last):
+  File "D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\training\train_fusion.py", line 13, in <module>
+    from dataloaders.fusion_dataset import FusionDataset
+ModuleNotFoundError: No module named 'dataloaders'
+
+Training failed.
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion> python run_preprocessing.py
+
+Starting Full Preprocessing Pipeline
+
+
+============================================================
+Running: dataset_builder.py
+============================================================
+Dataset root: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset\raw
+Output folder: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset
+
+Scanning dataset...
+
+Total valid samples: 144
+
+Splitting dataset...
+
+Train: 100
+Validation: 22
+Test: 22
+
+Saving CSV files...
+
+Saved: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset\train.csv
+Saved: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset\val.csv
+Saved: D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion\dataset\test.csv
+
+Dataset build complete!
+
+Completed: dataset_builder.py
+
+============================================================
+Running: extract_frames.py
+============================================================
+Frame extraction started
+
+
+Processing train.csv - 100 videos
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:27<00:00,  3.66it/s]
+
+Processing val.csv - 22 videos
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:06<00:00,  3.43it/s]
+
+Processing test.csv - 22 videos
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:05<00:00,  4.16it/s]
+
+Frame extraction complete!
+
+Completed: extract_frames.py
+
+============================================================
+Running: extract_audio.py
+============================================================
+Starting audio extraction...
+
+
+Processing train.csv (100 videos)
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 9038.08it/s]
+
+Processing val.csv (22 videos)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<00:00, 7041.18it/s]
+
+Processing test.csv (22 videos)
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<?, ?it/s]
+
+Audio extraction complete!
+
+Completed: extract_audio.py
+
+============================================================
+Running: extract_mfcc.py
+============================================================
+Starting MFCC extraction
+
+
+Processing train (100 samples)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:02<00:00, 42.34it/s]
+Saved train features: (100, 40)
+
+Processing val (22 samples)
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<00:00, 184.08it/s]
+Saved val features: (22, 40)
+
+Processing test (22 samples)
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<00:00, 194.30it/s]
+Saved test features: (22, 40)
+
+MFCC feature extraction complete!
+
+Completed: extract_mfcc.py
+
+All preprocessing steps completed successfully!
+PS D:\Projects\Audio-Visual-Emotion-Recognition-using-Feature-Concatenation-Fusion>
