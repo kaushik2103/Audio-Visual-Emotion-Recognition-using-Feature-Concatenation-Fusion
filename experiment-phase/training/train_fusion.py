@@ -8,7 +8,6 @@ import json
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix
 import seaborn as sns
-import numpy as np
 
 from dataloaders.fusion_dataset import FusionDataset
 from models.fusion_model import FusionModel
