@@ -19,7 +19,7 @@ TRAIN_SCRIPTS = {
 def run_training(model_type):
 
     if model_type not in TRAIN_SCRIPTS:
-        print("Invalid model type.")
+        print("Invalid models type.")
         print("Choose from: audio, face, fusion")
         sys.exit(1)
 
@@ -32,7 +32,7 @@ def run_training(model_type):
         sys.exit(1)
 
     print("\n" + "="*60)
-    print(f"Starting training: {model_type.upper()} model")
+    print(f"Starting training: {model_type.upper()} models")
     print("="*60)
 
     result = subprocess.run(
@@ -54,7 +54,7 @@ def main():
     )
 
     parser.add_argument(
-        "--model",
+        "--models",
         type=str,
         required=True,
         choices=["audio", "face", "fusion"],

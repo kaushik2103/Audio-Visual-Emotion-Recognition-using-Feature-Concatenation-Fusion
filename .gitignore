@@ -208,6 +208,8 @@ __marimo__/
 
 # Dataset
 dataset
+experiment-phase/dataset
 
 # Models
 experiment-phase/experiments/checkpoints
+checkpoints

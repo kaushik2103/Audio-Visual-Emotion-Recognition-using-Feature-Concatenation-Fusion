@@ -10,35 +10,14 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\results\audio_training_log.csv">
+        <entry key="\dataset\train.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\results\face_training_log.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\results\fusion_predictions.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\results\new_dataset\predictions.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\results\training_log.csv">
+        <entry key="\dataset\val.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

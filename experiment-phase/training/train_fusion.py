@@ -246,7 +246,7 @@ def main():
             final_preds = preds
             final_labels = labels
 
-            print("Best model saved!")
+            print("Best models saved!")
 
     print("\nTraining Complete!")
     print("Best Validation Accuracy:", best_val_acc)

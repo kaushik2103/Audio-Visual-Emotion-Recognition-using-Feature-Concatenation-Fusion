@@ -258,7 +258,7 @@ def main():
             final_preds = preds
             final_labels = labels
 
-            print("Best audio model saved!")
+            print("Best audio models saved!")
 
     print("\nTraining Complete!")
 

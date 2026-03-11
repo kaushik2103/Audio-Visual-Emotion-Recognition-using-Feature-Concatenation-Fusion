@@ -67,7 +67,7 @@ def load_model(model_type):
 
     else:
 
-        raise ValueError("Invalid model type")
+        raise ValueError("Invalid models type")
 
     model.load_state_dict(torch.load(checkpoint, map_location=DEVICE))
 
@@ -124,7 +124,7 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "--model",
+        "--models",
         required=True,
         choices=["audio", "face", "fusion"],
         help="Model to test"
@@ -132,7 +132,7 @@ def main():
 
     args = parser.parse_args()
 
-    print("\nTesting model:", args.model)
+    print("\nTesting models:", args.model)
 
     if args.model == "fusion":
 

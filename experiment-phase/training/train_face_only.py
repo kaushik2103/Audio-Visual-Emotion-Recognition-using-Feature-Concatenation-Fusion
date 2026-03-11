@@ -298,7 +298,7 @@ def main():
             final_preds = preds
             final_labels = labels
 
-            print("Best face model saved!")
+            print("Best face models saved!")
 
     print("\nTraining Complete!")
 
