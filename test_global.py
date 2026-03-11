@@ -19,11 +19,6 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 
 from models.multimodal_model import FusionModel
 
-
-# ==========================================================
-# CONFIG
-# ==========================================================
-
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 DATASET_DIR = Path("dataset")
@@ -53,19 +48,11 @@ emotion_labels = [
 MAX_AUDIO_LEN = 200
 
 
-# ==========================================================
-# IMAGE TRANSFORM
-# ==========================================================
-
 transform = transforms.Compose([
     transforms.Resize((224,224)),
     transforms.ToTensor()
 ])
 
-
-# ==========================================================
-# DATASET
-# ==========================================================
 
 class GlobalTestDataset(Dataset):
 
@@ -172,10 +159,6 @@ class GlobalTestDataset(Dataset):
         return img, audio, label, path.name
 
 
-# ==========================================================
-# LOAD DATASET
-# ==========================================================
-
 def load_dataset():
 
     videos = list(DATASET_DIR.rglob("Actor_04/*.mp4"))
@@ -198,10 +181,6 @@ def load_dataset():
 
     return loader
 
-
-# ==========================================================
-# SAVE CONFUSION MATRIX
-# ==========================================================
 
 def save_confusion_matrices(labels, preds):
 
@@ -255,10 +234,6 @@ def save_confusion_matrices(labels, preds):
     plt.close()
 
 
-# ==========================================================
-# EVALUATION
-# ==========================================================
-
 def evaluate():
 
     print("Loading model...")
@@ -296,20 +271,12 @@ def evaluate():
 
     print("Accuracy:", accuracy)
 
-    # ======================================================
-    # SAVE METRICS
-    # ======================================================
-
     metrics = {
         "accuracy": float(accuracy)
     }
 
     with open(RESULTS_DIR/"metrics.json","w") as f:
         json.dump(metrics, f, indent=4)
-
-    # ======================================================
-    # SAVE REPORT
-    # ======================================================
 
     report = classification_report(
         labels,
@@ -320,15 +287,7 @@ def evaluate():
     with open(RESULTS_DIR/"classification_report.txt","w") as f:
         f.write(report)
 
-    # ======================================================
-    # SAVE CONFUSION MATRIX
-    # ======================================================
-
     save_confusion_matrices(labels, preds)
-
-    # ======================================================
-    # SAVE PREDICTIONS
-    # ======================================================
 
     df = pd.DataFrame({
         "video": names,
@@ -341,8 +300,6 @@ def evaluate():
     print("\nClassification Report:\n")
     print(report)
 
-
-# ==========================================================
 
 if __name__ == "__main__":
 

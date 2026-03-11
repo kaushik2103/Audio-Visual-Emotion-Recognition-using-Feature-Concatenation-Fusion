@@ -25,10 +25,6 @@ from models.multimodal_model import (
     save_confusion_matrix
 )
 
-# ==========================================================
-# CONFIG
-# ==========================================================
-
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 DATASET_DIR = Path("dataset/raw")
@@ -60,18 +56,10 @@ emotion_labels = [
 
 MAX_AUDIO_LEN = 200
 
-# ==========================================================
-# IMAGE TRANSFORM
-# ==========================================================
-
 transform = transforms.Compose([
     transforms.Resize((224,224)),
     transforms.ToTensor()
 ])
-
-# ==========================================================
-# DATASET
-# ==========================================================
 
 class EmotionDataset(Dataset):
 
@@ -179,10 +167,6 @@ class EmotionDataset(Dataset):
         return image, audio, label
 
 
-# ==========================================================
-# LOAD DATASET
-# ==========================================================
-
 def load_dataset():
 
     videos = list(DATASET_DIR.rglob("*.mp4"))
@@ -222,10 +206,6 @@ def load_dataset():
 
     return train_loader, test_loader
 
-
-# ==========================================================
-# TRAIN MODEL
-# ==========================================================
 
 def train_model(train_loader):
 
@@ -276,10 +256,6 @@ def train_model(train_loader):
     return model, losses
 
 
-# ==========================================================
-# EVALUATE MODEL
-# ==========================================================
-
 def evaluate(model, test_loader):
 
     model.eval()
@@ -316,10 +292,6 @@ def evaluate(model, test_loader):
     return report
 
 
-# ==========================================================
-# TRAINING CURVE
-# ==========================================================
-
 def save_training_plot(losses):
 
     plt.figure()
@@ -336,10 +308,6 @@ def save_training_plot(losses):
 
     plt.close()
 
-
-# ==========================================================
-# MAIN
-# ==========================================================
 
 def main():
 

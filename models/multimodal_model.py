@@ -8,10 +8,6 @@ import seaborn as sns
 from sklearn.metrics import classification_report, confusion_matrix
 
 
-# ==========================================================
-# IMAGE ENCODER (ResNet50)
-# ==========================================================
-
 class ImageEncoder(nn.Module):
 
     def __init__(self):
@@ -34,10 +30,6 @@ class ImageEncoder(nn.Module):
 
         return x
 
-
-# ==========================================================
-# AUDIO ENCODER (CNN + BiLSTM)
-# ==========================================================
 
 class AudioEncoder(nn.Module):
 
@@ -84,10 +76,6 @@ class AudioEncoder(nn.Module):
 
         return x
 
-
-# ==========================================================
-# FUSION MODEL
-# ==========================================================
 
 class FusionModel(nn.Module):
 
@@ -141,11 +129,6 @@ class FusionModel(nn.Module):
 
         return out
 
-
-# ==========================================================
-# SAVE MODEL
-# ==========================================================
-
 def save_model(model, checkpoint_dir):
 
     checkpoint_dir = Path(checkpoint_dir)
@@ -158,10 +141,6 @@ def save_model(model, checkpoint_dir):
     )
 
 
-# ==========================================================
-# SAVE METRICS
-# ==========================================================
-
 def save_metrics(metrics, results_dir):
 
     results_dir = Path(results_dir)
@@ -171,10 +150,6 @@ def save_metrics(metrics, results_dir):
     with open(results_dir / "metrics.json", "w") as f:
         json.dump(metrics, f, indent=4)
 
-
-# ==========================================================
-# SAVE CLASSIFICATION REPORT
-# ==========================================================
 
 def save_report(labels, preds, class_names, results_dir):
 
@@ -189,10 +164,6 @@ def save_report(labels, preds, class_names, results_dir):
     with open(results_dir / "report.txt", "w") as f:
         f.write(report)
 
-
-# ==========================================================
-# SAVE CONFUSION MATRIX
-# ==========================================================
 
 def save_confusion_matrix(labels, preds, class_names, results_dir):
 
@@ -221,10 +192,6 @@ def save_confusion_matrix(labels, preds, class_names, results_dir):
 
     plt.close()
 
-
-# ==========================================================
-# SAVE TRAINING CURVE
-# ==========================================================
 
 def save_training_curve(losses, results_dir):
 
